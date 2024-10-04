@@ -130,16 +130,20 @@ class TimerViewController: UIViewController {
             timerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
 
-        // スタートボタンの幅と高さの制約を追加
+        // Start/Pause Buttonの幅と高さの制約を追加
         NSLayoutConstraint.activate([
             startPauseButton.widthAnchor.constraint(equalToConstant: 100),
             startPauseButton.heightAnchor.constraint(equalToConstant: 50),
+            startPauseButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60),
+            startPauseButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40)
         ])
 
         // リセットボタンの幅と高さの制約を追加
         NSLayoutConstraint.activate([
             resetButton.widthAnchor.constraint(equalToConstant: 100),
             resetButton.heightAnchor.constraint(equalToConstant: 50),
+            resetButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60),
+            resetButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])
 
         // 各インターバル用TextField (時, 分, 秒) のレイアウト
@@ -160,18 +164,6 @@ class TimerViewController: UIViewController {
                 timeFields[2].widthAnchor.constraint(equalToConstant: 60)
             ])
         }
-
-        // Start/Pause Buttonのレイアウト
-        NSLayoutConstraint.activate([
-            startPauseButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60),
-            startPauseButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40)
-        ])
-        
-        // Reset Buttonのレイアウト
-        NSLayoutConstraint.activate([
-            resetButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60),
-            resetButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
-        ])
         
         // Bell Buttonのレイアウト
         NSLayoutConstraint.activate([
