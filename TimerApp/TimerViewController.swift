@@ -85,7 +85,10 @@ class TimerViewController: UIViewController {
         startPauseButton.setTitleColor(.red, for: .normal)
         startPauseButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)//ここの数字を変更すると文字の大きさが変わる
         startPauseButton.translatesAutoresizingMaskIntoConstraints = false
-        startPauseButton.addTarget(self, action: #selector(startPauseTapped), for: .touchUpInside)
+        startPauseButton.addAction(
+            UIAction { [weak self] _ in self?.startPauseTapped() },
+            for: .touchUpInside
+        )
         view.addSubview(startPauseButton)
         
         // Reset Button
@@ -94,7 +97,10 @@ class TimerViewController: UIViewController {
         resetButton.setTitleColor(.blue, for: .normal)
         resetButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)//ここの数字を変更すると文字の大きさが変わる
         resetButton.translatesAutoresizingMaskIntoConstraints = false
-        resetButton.addTarget(self, action: #selector(resetTapped), for: .touchUpInside)
+        resetButton.addAction(
+            UIAction { [weak self] _ in self?.resetTapped() },
+            for: .touchUpInside
+        )
         view.addSubview(resetButton)
         
         // Bell Button with Icon
@@ -102,7 +108,7 @@ class TimerViewController: UIViewController {
         bellButton.setTitle("🛎️", for: .normal)
         bellButton.titleLabel?.font = UIFont.systemFont(ofSize: 60)//ここの数字を変更すると文字の大きさが変わる
         bellButton.translatesAutoresizingMaskIntoConstraints = false
-        bellButton.addTarget(self, action: #selector(bellTapped), for: .touchUpInside)
+        bellButton.addAction(UIAction { [weak self] _ in self?.bellTapped() }, for: .touchUpInside)
         view.addSubview(bellButton)
         
         layoutUI() // UIのレイアウトを設定
@@ -119,16 +125,16 @@ class TimerViewController: UIViewController {
         // 各インターバル用TextField (時, 分, 秒) のレイアウト
                 for (index, timeFields) in intervalTextFields.enumerated() {
                     let yOffset = CGFloat(40 + index * 50)
-                    
+
                     NSLayoutConstraint.activate([
                         timeFields[0].topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: yOffset),
                         timeFields[0].leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
                         timeFields[0].widthAnchor.constraint(equalToConstant: 60),
-                        
+
                         timeFields[1].topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: yOffset),
                         timeFields[1].centerXAnchor.constraint(equalTo: view.centerXAnchor),
                         timeFields[1].widthAnchor.constraint(equalToConstant: 60),
-                        
+
                         timeFields[2].topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: yOffset),
                         timeFields[2].trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
                         timeFields[2].widthAnchor.constraint(equalToConstant: 60)
@@ -165,7 +171,7 @@ class TimerViewController: UIViewController {
         }
     
     // タイマーの開始/停止
-    @objc func startPauseTapped() {
+    func startPauseTapped() {
         if isTimerRunning {
             pauseTimer()
         } else {
@@ -174,7 +180,7 @@ class TimerViewController: UIViewController {
     }
     
     // タイマーのリセット
-    @objc func resetTapped() {
+    func resetTapped() {
         timer?.invalidate()
         totalTime = 0
         isTimerRunning = false
@@ -211,24 +217,24 @@ class TimerViewController: UIViewController {
 
     
     // ベルを鳴らす
-    @objc func bellTapped() {
+    func bellTapped() {
         playBellSound2() // 音を鳴らす関数を呼び出す
         print("🛎️ 手動でベルが鳴りました！")
     }
     
     // タイマーの開始
-        func startTimer() {
-            bellTimes = intervalTextFields.compactMap { fields in
-                let hours = Int(fields[0].text ?? "0") ?? 0
-                let minutes = Int(fields[1].text ?? "0") ?? 0
-                let seconds = Int(fields[2].text ?? "0") ?? 0
-                return hours * 3600 + minutes * 60 + seconds
-            }
-            bellIndex = 0
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-            isTimerRunning = true
-            startPauseButton.setTitle("一時停止", for: .normal)
+    func startTimer() {
+        bellTimes = intervalTextFields.compactMap { fields in
+            let hours = Int(fields[0].text ?? "0") ?? 0
+            let minutes = Int(fields[1].text ?? "0") ?? 0
+            let seconds = Int(fields[2].text ?? "0") ?? 0
+            return hours * 3600 + minutes * 60 + seconds
         }
+        bellIndex = 0
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        isTimerRunning = true
+        startPauseButton.setTitle("一時停止", for: .normal)
+    }
     
     // タイマーの停止
     func pauseTimer() {
