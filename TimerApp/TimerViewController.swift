@@ -46,7 +46,7 @@ class TimerViewController: UIViewController {
     // UIを設定する関数
     func setupUI() {
         view.backgroundColor = .white
-        
+
         // Timer Label
         timerLabel = UILabel()
         timerLabel.text = "00:00:00"
@@ -54,30 +54,30 @@ class TimerViewController: UIViewController {
         timerLabel.textAlignment = .center
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(timerLabel)
-        
+
         // 各インターバル用のTextField (時, 分, 秒)を5つ作成
-                for _ in 0..<5 {
-                    var timeFields: [UITextField] = []
-                    
-                    // "時" TextField
-                    let hoursField = createTextField(placeholder: "時")
-                    timeFields.append(hoursField)
-                    
-                    // "分" TextField
-                    let minutesField = createTextField(placeholder: "分")
-                    timeFields.append(minutesField)
-                    
-                    // "秒" TextField
-                    let secondsField = createTextField(placeholder: "秒")
-                    timeFields.append(secondsField)
-                    
-                    intervalTextFields.append(timeFields)
-                    
-                    // 各フィールドをビューに追加
-                    view.addSubview(hoursField)
-                    view.addSubview(minutesField)
-                    view.addSubview(secondsField)
-                }
+        for _ in 0..<5 {
+            var timeFields: [UITextField] = []
+
+            // "時" TextField
+            let hoursField = createTextField(placeholder: "時")
+            timeFields.append(hoursField)
+
+            // "分" TextField
+            let minutesField = createTextField(placeholder: "分")
+            timeFields.append(minutesField)
+
+            // "秒" TextField
+            let secondsField = createTextField(placeholder: "秒")
+            timeFields.append(secondsField)
+
+            intervalTextFields.append(timeFields)
+
+            // 各フィールドをビューに追加
+            view.addSubview(hoursField)
+            view.addSubview(minutesField)
+            view.addSubview(secondsField)
+        }
         
         // Start/Pause Button
         startPauseButton = UIButton(type: .system)
@@ -121,26 +121,26 @@ class TimerViewController: UIViewController {
             timerLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             timerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        
+
         // 各インターバル用TextField (時, 分, 秒) のレイアウト
-                for (index, timeFields) in intervalTextFields.enumerated() {
-                    let yOffset = CGFloat(40 + index * 50)
+        for (index, timeFields) in intervalTextFields.enumerated() {
+            let yOffset = CGFloat(40 + index * 50)
 
-                    NSLayoutConstraint.activate([
-                        timeFields[0].topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: yOffset),
-                        timeFields[0].leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-                        timeFields[0].widthAnchor.constraint(equalToConstant: 60),
+            NSLayoutConstraint.activate([
+                timeFields[0].topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: yOffset),
+                timeFields[0].leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+                timeFields[0].widthAnchor.constraint(equalToConstant: 60),
 
-                        timeFields[1].topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: yOffset),
-                        timeFields[1].centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                        timeFields[1].widthAnchor.constraint(equalToConstant: 60),
+                timeFields[1].topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: yOffset),
+                timeFields[1].centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                timeFields[1].widthAnchor.constraint(equalToConstant: 60),
 
-                        timeFields[2].topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: yOffset),
-                        timeFields[2].trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-                        timeFields[2].widthAnchor.constraint(equalToConstant: 60)
-                    ])
-                }
-        
+                timeFields[2].topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: yOffset),
+                timeFields[2].trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+                timeFields[2].widthAnchor.constraint(equalToConstant: 60)
+            ])
+        }
+
         // Start/Pause Buttonのレイアウト
         NSLayoutConstraint.activate([
             startPauseButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60),
@@ -161,14 +161,14 @@ class TimerViewController: UIViewController {
     }
     
     // TextFieldを生成する共通の関数
-        func createTextField(placeholder: String) -> UITextField {
-            let textField = UITextField()
-            textField.borderStyle = .roundedRect
-            textField.placeholder = placeholder
-            textField.keyboardType = .numberPad
-            textField.translatesAutoresizingMaskIntoConstraints = false
-            return textField
-        }
+    func createTextField(placeholder: String) -> UITextField {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = placeholder
+        textField.keyboardType = .numberPad
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }
     
     // タイマーの開始/停止
     func startPauseTapped() {
