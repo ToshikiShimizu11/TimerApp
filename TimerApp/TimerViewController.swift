@@ -16,10 +16,11 @@ class TimerViewController: UIViewController {
     var startPauseButton: UIButton!
     var resetButton: UIButton!
     var bellButton: UIButton!
-    var intervalTextFields: [[UITextField]] = [] // [時, 分, 秒]の配列
+    // [時, 分, 秒]の配列
+    var intervalTextFields: [[UITextField]] = []
+
     var audioPlayer: AVAudioPlayer?
 
-    
     // タイマー管理用変数
     var timer: Timer?
     var totalTime = 0
@@ -39,8 +40,11 @@ class TimerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI() // UIのセットアップ
-        setupAudioSession() // オーディオセッションのセットアップ
+        // UIのセットアップ
+        setupUI()
+
+        // オーディオセッションのセットアップ
+        setupAudioSession()
     }
     
     // UIを設定する関数
@@ -50,7 +54,8 @@ class TimerViewController: UIViewController {
         // Timer Label
         timerLabel = UILabel()
         timerLabel.text = "00:00:00"
-        timerLabel.font = UIFont.systemFont(ofSize: 60)//ここの数字を変更すると文字の大きさが変わる
+        // Fontの設定
+        timerLabel.font = UIFont.systemFont(ofSize: 60)
         timerLabel.textAlignment = .center
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(timerLabel)
@@ -83,7 +88,8 @@ class TimerViewController: UIViewController {
         startPauseButton = UIButton(type: .system)
         startPauseButton.setTitle("開始", for: .normal)
         startPauseButton.setTitleColor(.red, for: .normal)
-        startPauseButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)//ここの数字を変更すると文字の大きさが変わる
+        // Fontの設定
+        startPauseButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         startPauseButton.translatesAutoresizingMaskIntoConstraints = false
         startPauseButton.addAction(
             UIAction { [weak self] _ in self?.startPauseTapped() },
@@ -95,7 +101,8 @@ class TimerViewController: UIViewController {
         resetButton = UIButton(type: .system)
         resetButton.setTitle("リセット", for: .normal)
         resetButton.setTitleColor(.blue, for: .normal)
-        resetButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)//ここの数字を変更すると文字の大きさが変わる
+        // Fontの設定
+        resetButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         resetButton.translatesAutoresizingMaskIntoConstraints = false
         resetButton.addAction(
             UIAction { [weak self] _ in self?.resetTapped() },
@@ -189,7 +196,7 @@ class TimerViewController: UIViewController {
         updateTimerLabel()
     }
     
-    //音を再生
+    // 音を再生
     func playBellSound() {
         guard let url = Bundle.main.url(forResource: "bell2", withExtension: "m4a") else { return } // bell2.m4aを再生
 
@@ -202,7 +209,7 @@ class TimerViewController: UIViewController {
         }
     }
     
-    //音ver2を再生
+    // 音ver2を再生
     func playBellSound2() {
         guard let url = Bundle.main.url(forResource: "bell1", withExtension: "m4a") else { return } // bell1.m4aを再生
 
@@ -218,7 +225,8 @@ class TimerViewController: UIViewController {
     
     // ベルを鳴らす
     func bellTapped() {
-        playBellSound2() // 音を鳴らす関数を呼び出す
+        // 音を鳴らす関数を呼び出す
+        playBellSound2()
         print("🛎️ 手動でベルが鳴りました！")
     }
     
@@ -249,7 +257,8 @@ class TimerViewController: UIViewController {
         updateTimerLabel()
         
         if bellIndex < bellTimes.count && totalTime == bellTimes[bellIndex] {
-            playBellSound() // 音を鳴らす関数を呼び出す
+            // 音を鳴らす関数を呼び出す
+            playBellSound()
             print("🛎️ \(bellIndex + 1)回目のベルが鳴りました！")
             bellIndex += 1
         }
