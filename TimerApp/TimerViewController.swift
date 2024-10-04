@@ -16,7 +16,7 @@ class TimerViewController: UIViewController {
     var startPauseButton: UIButton!
     var resetButton: UIButton!
     var bellButton: UIButton!
-    var intervalTextFields: [UITextField] = []
+    var intervalTextFields: [[UITextField]] = [] // [時, 分, 秒]の配列
     var audioPlayer: AVAudioPlayer?
 
     
@@ -49,28 +49,41 @@ class TimerViewController: UIViewController {
         
         // Timer Label
         timerLabel = UILabel()
-        timerLabel.text = "00:00"
+        timerLabel.text = "00:00:00"
         timerLabel.font = UIFont.systemFont(ofSize: 60)//ここの数字を変更すると文字の大きさが変わる
         timerLabel.textAlignment = .center
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(timerLabel)
         
-        // インターバルを入力するTextFieldを3つ作成
-        for _ in 0..<5 {
-            let textField = UITextField()
-            textField.borderStyle = .roundedRect
-            textField.placeholder = "ベルタイミング (秒)"
-            textField.keyboardType = .numberPad
-            textField.translatesAutoresizingMaskIntoConstraints = false
-            intervalTextFields.append(textField)
-            view.addSubview(textField)
-        }
+        // 各インターバル用のTextField (時, 分, 秒)を5つ作成
+                for _ in 0..<5 {
+                    var timeFields: [UITextField] = []
+                    
+                    // "時" TextField
+                    let hoursField = createTextField(placeholder: "時")
+                    timeFields.append(hoursField)
+                    
+                    // "分" TextField
+                    let minutesField = createTextField(placeholder: "分")
+                    timeFields.append(minutesField)
+                    
+                    // "秒" TextField
+                    let secondsField = createTextField(placeholder: "秒")
+                    timeFields.append(secondsField)
+                    
+                    intervalTextFields.append(timeFields)
+                    
+                    // 各フィールドをビューに追加
+                    view.addSubview(hoursField)
+                    view.addSubview(minutesField)
+                    view.addSubview(secondsField)
+                }
         
         // Start/Pause Button
         startPauseButton = UIButton(type: .system)
         startPauseButton.setTitle("開始", for: .normal)
         startPauseButton.setTitleColor(.red, for: .normal)
-        startPauseButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)//ここの数字を変更すると文字の大きさが変わる
+        startPauseButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)//ここの数字を変更すると文字の大きさが変わる
         startPauseButton.translatesAutoresizingMaskIntoConstraints = false
         startPauseButton.addTarget(self, action: #selector(startPauseTapped), for: .touchUpInside)
         view.addSubview(startPauseButton)
@@ -79,7 +92,7 @@ class TimerViewController: UIViewController {
         resetButton = UIButton(type: .system)
         resetButton.setTitle("リセット", for: .normal)
         resetButton.setTitleColor(.blue, for: .normal)
-        resetButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)//ここの数字を変更すると文字の大きさが変わる
+        resetButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)//ここの数字を変更すると文字の大きさが変わる
         resetButton.translatesAutoresizingMaskIntoConstraints = false
         resetButton.addTarget(self, action: #selector(resetTapped), for: .touchUpInside)
         view.addSubview(resetButton)
@@ -103,14 +116,24 @@ class TimerViewController: UIViewController {
             timerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
-        // 各インターバル用TextFieldのレイアウト
-        for (index, textField) in intervalTextFields.enumerated() {
-            NSLayoutConstraint.activate([
-                textField.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: CGFloat(40 + index * 50)),
-                textField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                textField.widthAnchor.constraint(equalToConstant: 200)
-            ])
-        }
+        // 各インターバル用TextField (時, 分, 秒) のレイアウト
+                for (index, timeFields) in intervalTextFields.enumerated() {
+                    let yOffset = CGFloat(40 + index * 50)
+                    
+                    NSLayoutConstraint.activate([
+                        timeFields[0].topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: yOffset),
+                        timeFields[0].leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+                        timeFields[0].widthAnchor.constraint(equalToConstant: 60),
+                        
+                        timeFields[1].topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: yOffset),
+                        timeFields[1].centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                        timeFields[1].widthAnchor.constraint(equalToConstant: 60),
+                        
+                        timeFields[2].topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: yOffset),
+                        timeFields[2].trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+                        timeFields[2].widthAnchor.constraint(equalToConstant: 60)
+                    ])
+                }
         
         // Start/Pause Buttonのレイアウト
         NSLayoutConstraint.activate([
@@ -130,6 +153,16 @@ class TimerViewController: UIViewController {
             bellButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
+    
+    // TextFieldを生成する共通の関数
+        func createTextField(placeholder: String) -> UITextField {
+            let textField = UITextField()
+            textField.borderStyle = .roundedRect
+            textField.placeholder = placeholder
+            textField.keyboardType = .numberPad
+            textField.translatesAutoresizingMaskIntoConstraints = false
+            return textField
+        }
     
     // タイマーの開始/停止
     @objc func startPauseTapped() {
@@ -152,7 +185,7 @@ class TimerViewController: UIViewController {
     
     //音を再生
     func playBellSound() {
-        guard let url = Bundle.main.url(forResource: "motenai", withExtension: "m4a") else { return } // nmuri.m4aを再生
+        guard let url = Bundle.main.url(forResource: "bell2", withExtension: "m4a") else { return } // bell2.m4aを再生
 
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
@@ -165,7 +198,7 @@ class TimerViewController: UIViewController {
     
     //音ver2を再生
     func playBellSound2() {
-        guard let url = Bundle.main.url(forResource: "kibisii", withExtension: "m4a") else { return } // gatishonbenn.m4aを再生
+        guard let url = Bundle.main.url(forResource: "bell1", withExtension: "m4a") else { return } // bell1.m4aを再生
 
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
@@ -184,13 +217,18 @@ class TimerViewController: UIViewController {
     }
     
     // タイマーの開始
-    func startTimer() {
-        bellTimes = intervalTextFields.compactMap { Int($0.text ?? "") }
-        bellIndex = 0
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        isTimerRunning = true
-        startPauseButton.setTitle("一時停止", for: .normal)
-    }
+        func startTimer() {
+            bellTimes = intervalTextFields.compactMap { fields in
+                let hours = Int(fields[0].text ?? "0") ?? 0
+                let minutes = Int(fields[1].text ?? "0") ?? 0
+                let seconds = Int(fields[2].text ?? "0") ?? 0
+                return hours * 3600 + minutes * 60 + seconds
+            }
+            bellIndex = 0
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+            isTimerRunning = true
+            startPauseButton.setTitle("一時停止", for: .normal)
+        }
     
     // タイマーの停止
     func pauseTimer() {

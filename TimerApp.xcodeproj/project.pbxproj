@@ -12,10 +12,9 @@
 		1F4784012C9CB3260032FF88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F4784002C9CB3260032FF88 /* Assets.xcassets */; };
 		1F4784042C9CB3260032FF88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F4784032C9CB3260032FF88 /* Preview Assets.xcassets */; };
 		1F47840B2C9CB3600032FF88 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47840A2C9CB3600032FF88 /* TimerViewController.swift */; };
-		1FBE4AF22C9CD4BC00BD1202 /* kani.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE4AF12C9CD4BC00BD1202 /* kani.m4a */; };
-		1FBE4AF42C9CF41200BD1202 /* motenai.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE4AF32C9CF41200BD1202 /* motenai.m4a */; };
-		1FBE4AF62C9CF41E00BD1202 /* kikikann.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE4AF52C9CF41E00BD1202 /* kikikann.m4a */; };
-		1FBE4AF82C9CF42C00BD1202 /* kibisii.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE4AF72C9CF42C00BD1202 /* kibisii.m4a */; };
+		1FD9BB2C2CAFDF3D008AD191 /* bell1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FD9BB2B2CAFDF3D008AD191 /* bell1.m4a */; };
+		1FD9BB302CAFDF6A008AD191 /* bell3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FD9BB2F2CAFDF6A008AD191 /* bell3.m4a */; };
+		1FD9BB322CAFDF7F008AD191 /* bell2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FD9BB312CAFDF7F008AD191 /* bell2.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,10 +24,9 @@
 		1F4784002C9CB3260032FF88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F4784032C9CB3260032FF88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1F47840A2C9CB3600032FF88 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
-		1FBE4AF12C9CD4BC00BD1202 /* kani.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = kani.m4a; sourceTree = "<group>"; };
-		1FBE4AF32C9CF41200BD1202 /* motenai.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = motenai.m4a; sourceTree = "<group>"; };
-		1FBE4AF52C9CF41E00BD1202 /* kikikann.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = kikikann.m4a; sourceTree = "<group>"; };
-		1FBE4AF72C9CF42C00BD1202 /* kibisii.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = kibisii.m4a; sourceTree = "<group>"; };
+		1FD9BB2B2CAFDF3D008AD191 /* bell1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell1.m4a; sourceTree = "<group>"; };
+		1FD9BB2F2CAFDF6A008AD191 /* bell3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell3.m4a; sourceTree = "<group>"; };
+		1FD9BB312CAFDF7F008AD191 /* bell2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell2.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +62,9 @@
 				1F4783FC2C9CB3250032FF88 /* TimerAppApp.swift */,
 				1F4783FE2C9CB3250032FF88 /* ContentView.swift */,
 				1F47840A2C9CB3600032FF88 /* TimerViewController.swift */,
-				1FBE4AF32C9CF41200BD1202 /* motenai.m4a */,
-				1FBE4AF72C9CF42C00BD1202 /* kibisii.m4a */,
-				1FBE4AF12C9CD4BC00BD1202 /* kani.m4a */,
-				1FBE4AF52C9CF41E00BD1202 /* kikikann.m4a */,
+				1FD9BB2F2CAFDF6A008AD191 /* bell3.m4a */,
+				1FD9BB312CAFDF7F008AD191 /* bell2.m4a */,
+				1FD9BB2B2CAFDF3D008AD191 /* bell1.m4a */,
 				1F4784002C9CB3260032FF88 /* Assets.xcassets */,
 				1F4784022C9CB3260032FF88 /* Preview Content */,
 			);
@@ -140,12 +137,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FBE4AF42C9CF41200BD1202 /* motenai.m4a in Resources */,
-				1FBE4AF62C9CF41E00BD1202 /* kikikann.m4a in Resources */,
+				1FD9BB322CAFDF7F008AD191 /* bell2.m4a in Resources */,
+				1FD9BB302CAFDF6A008AD191 /* bell3.m4a in Resources */,
 				1F4784042C9CB3260032FF88 /* Preview Assets.xcassets in Resources */,
-				1FBE4AF22C9CD4BC00BD1202 /* kani.m4a in Resources */,
+				1FD9BB2C2CAFDF3D008AD191 /* bell1.m4a in Resources */,
 				1F4784012C9CB3260032FF88 /* Assets.xcassets in Resources */,
-				1FBE4AF82C9CF42C00BD1202 /* kibisii.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
