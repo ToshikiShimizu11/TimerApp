@@ -46,9 +46,8 @@ class TimerViewController: UIViewController {
         // オーディオセッションのセットアップ
         setupAudioSession()
     }
-    
-    // UIを設定する関数
-    func setupUI() {
+
+    private func setupUI() {
         view.backgroundColor = .white
 
         // Timer Label
@@ -87,9 +86,10 @@ class TimerViewController: UIViewController {
         // Start/Pause Button
         startPauseButton = UIButton(type: .system)
         startPauseButton.setTitle("開始", for: .normal)
-        startPauseButton.setTitleColor(.red, for: .normal)
-        // Fontの設定
-        startPauseButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        startPauseButton.backgroundColor = UIColor.systemBlue
+        startPauseButton.tintColor = .white
+        startPauseButton.layer.cornerRadius = 10
+        startPauseButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         startPauseButton.translatesAutoresizingMaskIntoConstraints = false
         startPauseButton.addAction(
             UIAction { [weak self] _ in self?.startPauseTapped() },
@@ -100,9 +100,10 @@ class TimerViewController: UIViewController {
         // Reset Button
         resetButton = UIButton(type: .system)
         resetButton.setTitle("リセット", for: .normal)
-        resetButton.setTitleColor(.blue, for: .normal)
-        // Fontの設定
-        resetButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        resetButton.backgroundColor = UIColor.systemRed
+        resetButton.tintColor = .white
+        resetButton.layer.cornerRadius = 10
+        resetButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         resetButton.translatesAutoresizingMaskIntoConstraints = false
         resetButton.addAction(
             UIAction { [weak self] _ in self?.resetTapped() },
@@ -113,20 +114,32 @@ class TimerViewController: UIViewController {
         // Bell Button with Icon
         bellButton = UIButton(type: .system)
         bellButton.setTitle("🛎️", for: .normal)
-        bellButton.titleLabel?.font = UIFont.systemFont(ofSize: 60)//ここの数字を変更すると文字の大きさが変わる
+        bellButton.titleLabel?.font = UIFont.systemFont(ofSize: 60)
         bellButton.translatesAutoresizingMaskIntoConstraints = false
         bellButton.addAction(UIAction { [weak self] _ in self?.bellTapped() }, for: .touchUpInside)
         view.addSubview(bellButton)
         
-        layoutUI() // UIのレイアウトを設定
+        setupLayoutUI()
     }
     
     // UIのレイアウト設定
-    func layoutUI() {
+    private func setupLayoutUI() {
         // Timer Labelのレイアウト
         NSLayoutConstraint.activate([
             timerLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             timerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+
+        // スタートボタンの幅と高さの制約を追加
+        NSLayoutConstraint.activate([
+            startPauseButton.widthAnchor.constraint(equalToConstant: 100),
+            startPauseButton.heightAnchor.constraint(equalToConstant: 50),
+        ])
+
+        // リセットボタンの幅と高さの制約を追加
+        NSLayoutConstraint.activate([
+            resetButton.widthAnchor.constraint(equalToConstant: 100),
+            resetButton.heightAnchor.constraint(equalToConstant: 50),
         ])
 
         // 各インターバル用TextField (時, 分, 秒) のレイアウト
@@ -168,7 +181,7 @@ class TimerViewController: UIViewController {
     }
     
     // TextFieldを生成する共通の関数
-    func createTextField(placeholder: String) -> UITextField {
+    private func createTextField(placeholder: String) -> UITextField {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.placeholder = placeholder
@@ -178,7 +191,7 @@ class TimerViewController: UIViewController {
     }
     
     // タイマーの開始/停止
-    func startPauseTapped() {
+    private func startPauseTapped() {
         if isTimerRunning {
             pauseTimer()
         } else {
@@ -187,7 +200,7 @@ class TimerViewController: UIViewController {
     }
     
     // タイマーのリセット
-    func resetTapped() {
+    private func resetTapped() {
         timer?.invalidate()
         totalTime = 0
         isTimerRunning = false
@@ -197,7 +210,7 @@ class TimerViewController: UIViewController {
     }
     
     // 音を再生
-    func playBellSound() {
+    private func playBellSound() {
         guard let url = Bundle.main.url(forResource: "bell2", withExtension: "m4a") else { return } // bell2.m4aを再生
 
         do {
@@ -210,7 +223,7 @@ class TimerViewController: UIViewController {
     }
     
     // 音ver2を再生
-    func playBellSound2() {
+    private func playBellSound2() {
         guard let url = Bundle.main.url(forResource: "bell1", withExtension: "m4a") else { return } // bell1.m4aを再生
 
         do {
@@ -224,14 +237,14 @@ class TimerViewController: UIViewController {
 
     
     // ベルを鳴らす
-    func bellTapped() {
+    private func bellTapped() {
         // 音を鳴らす関数を呼び出す
         playBellSound2()
         print("🛎️ 手動でベルが鳴りました！")
     }
     
     // タイマーの開始
-    func startTimer() {
+    private func startTimer() {
         bellTimes = intervalTextFields.compactMap { fields in
             let hours = Int(fields[0].text ?? "0") ?? 0
             let minutes = Int(fields[1].text ?? "0") ?? 0
@@ -245,7 +258,7 @@ class TimerViewController: UIViewController {
     }
     
     // タイマーの停止
-    func pauseTimer() {
+    private func pauseTimer() {
         timer?.invalidate()
         isTimerRunning = false
         startPauseButton.setTitle("開始", for: .normal)
@@ -265,7 +278,7 @@ class TimerViewController: UIViewController {
     }
     
     // タイマーラベルを更新
-    func updateTimerLabel() {
+    private func updateTimerLabel() {
         let hours = totalTime / 3600
         let minutes = (totalTime % 3600) / 60
         let seconds = totalTime % 60
