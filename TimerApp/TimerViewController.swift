@@ -251,8 +251,9 @@ class TimerViewController: UIViewController {
     
     // タイマーラベルを更新
     func updateTimerLabel() {
-        let minutes = totalTime / 60
+        let hours = totalTime / 3600
+        let minutes = (totalTime % 3600) / 60
         let seconds = totalTime % 60
-        timerLabel.text = String(format: "%02d:%02d", minutes, seconds)
+        timerLabel.text = String(format: "%02d:%02d:%02d",hours, minutes, seconds)
     }
 }
