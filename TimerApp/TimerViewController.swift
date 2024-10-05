@@ -200,23 +200,10 @@ class TimerViewController: UIViewController {
         startPauseButton.setTitle("開始", for: .normal)
         updateTimerLabel()
     }
-    
-    // 音を再生
-    private func playBellSound() {
-        guard let url = Bundle.main.url(forResource: "bell2", withExtension: "m4a") else { return } // bell2.m4aを再生
 
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.play()
-            print("音声ファイルのURL: \(url)")
-        } catch {
-            print("音声ファイルの再生に失敗しました: \(error)")
-        }
-    }
-    
-    // 音ver2を再生
-    private func playBellSound2() {
-        guard let url = Bundle.main.url(forResource: "bell1", withExtension: "m4a") else { return } // bell1.m4aを再生
+    // ベルを1回再生
+    private func playOneBellSound() {
+        guard let url = Bundle.main.url(forResource: "onebell", withExtension: "m4a") else { return }
 
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
@@ -227,11 +214,23 @@ class TimerViewController: UIViewController {
         }
     }
 
+    // ベルを3回再生
+    private func playFourBellSound() {
+        guard let url = Bundle.main.url(forResource: "fourbell", withExtension: "m4a") else { return }
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+            print("音声ファイルのURL: \(url)")
+        } catch {
+            print("音声ファイルの再生に失敗しました: \(error)")
+        }
+    }
     
     // ベルを鳴らす
     private func bellTapped() {
         // 音を鳴らす関数を呼び出す
-        playBellSound2()
+        playOneBellSound()
         print("🛎️ 手動でベルが鳴りました！")
     }
     
@@ -263,7 +262,7 @@ class TimerViewController: UIViewController {
         
         if bellIndex < bellTimes.count && totalTime == bellTimes[bellIndex] {
             // 音を鳴らす関数を呼び出す
-            playBellSound()
+            playFourBellSound()
             print("🛎️ \(bellIndex + 1)回目のベルが鳴りました！")
             bellIndex += 1
         }
