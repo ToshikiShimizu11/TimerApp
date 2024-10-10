@@ -8,7 +8,6 @@
 import UIKit
 import AVFoundation
 
-
 class TimerViewController: UIViewController {
 
     // UI Elements
