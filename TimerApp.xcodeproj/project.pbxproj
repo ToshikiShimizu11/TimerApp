@@ -12,9 +12,13 @@
 		1F4784012C9CB3260032FF88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F4784002C9CB3260032FF88 /* Assets.xcassets */; };
 		1F4784042C9CB3260032FF88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F4784032C9CB3260032FF88 /* Preview Assets.xcassets */; };
 		1F47840B2C9CB3600032FF88 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47840A2C9CB3600032FF88 /* TimerViewController.swift */; };
-		1FD9BB2C2CAFDF3D008AD191 /* bell1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FD9BB2B2CAFDF3D008AD191 /* bell1.m4a */; };
-		1FD9BB302CAFDF6A008AD191 /* bell3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FD9BB2F2CAFDF6A008AD191 /* bell3.m4a */; };
-		1FD9BB322CAFDF7F008AD191 /* bell2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FD9BB312CAFDF7F008AD191 /* bell2.m4a */; };
+		1FD9BB2C2CAFDF3D008AD191 /* onebell.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FD9BB2B2CAFDF3D008AD191 /* onebell.m4a */; };
+		1FD9BB322CAFDF7F008AD191 /* fourbell.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FD9BB312CAFDF7F008AD191 /* fourbell.m4a */; };
+		1FE28B9E2CC77F8200B1CD7F /* 5bell.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FE28B9D2CC77F8200B1CD7F /* 5bell.m4a */; };
+		1FE28B9F2CC77F8200B1CD7F /* 1bell.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FE28B992CC77F8200B1CD7F /* 1bell.m4a */; };
+		1FE28BA02CC77F8200B1CD7F /* 2bell.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FE28B9A2CC77F8200B1CD7F /* 2bell.m4a */; };
+		1FE28BA12CC77F8200B1CD7F /* 3bell.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FE28B9B2CC77F8200B1CD7F /* 3bell.m4a */; };
+		1FE28BA22CC77F8200B1CD7F /* 4bell.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1FE28B9C2CC77F8200B1CD7F /* 4bell.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,9 +28,13 @@
 		1F4784002C9CB3260032FF88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F4784032C9CB3260032FF88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1F47840A2C9CB3600032FF88 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
-		1FD9BB2B2CAFDF3D008AD191 /* bell1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell1.m4a; sourceTree = "<group>"; };
-		1FD9BB2F2CAFDF6A008AD191 /* bell3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell3.m4a; sourceTree = "<group>"; };
-		1FD9BB312CAFDF7F008AD191 /* bell2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell2.m4a; sourceTree = "<group>"; };
+		1FD9BB2B2CAFDF3D008AD191 /* onebell.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = onebell.m4a; sourceTree = "<group>"; };
+		1FD9BB312CAFDF7F008AD191 /* fourbell.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = fourbell.m4a; sourceTree = "<group>"; };
+		1FE28B992CC77F8200B1CD7F /* 1bell.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1bell.m4a; sourceTree = "<group>"; };
+		1FE28B9A2CC77F8200B1CD7F /* 2bell.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2bell.m4a; sourceTree = "<group>"; };
+		1FE28B9B2CC77F8200B1CD7F /* 3bell.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 3bell.m4a; sourceTree = "<group>"; };
+		1FE28B9C2CC77F8200B1CD7F /* 4bell.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4bell.m4a; sourceTree = "<group>"; };
+		1FE28B9D2CC77F8200B1CD7F /* 5bell.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 5bell.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +70,13 @@
 				1F4783FC2C9CB3250032FF88 /* TimerAppApp.swift */,
 				1F4783FE2C9CB3250032FF88 /* ContentView.swift */,
 				1F47840A2C9CB3600032FF88 /* TimerViewController.swift */,
-				1FD9BB2F2CAFDF6A008AD191 /* bell3.m4a */,
-				1FD9BB312CAFDF7F008AD191 /* bell2.m4a */,
-				1FD9BB2B2CAFDF3D008AD191 /* bell1.m4a */,
+				1FD9BB312CAFDF7F008AD191 /* fourbell.m4a */,
+				1FD9BB2B2CAFDF3D008AD191 /* onebell.m4a */,
+				1FE28B992CC77F8200B1CD7F /* 1bell.m4a */,
+				1FE28B9A2CC77F8200B1CD7F /* 2bell.m4a */,
+				1FE28B9B2CC77F8200B1CD7F /* 3bell.m4a */,
+				1FE28B9C2CC77F8200B1CD7F /* 4bell.m4a */,
+				1FE28B9D2CC77F8200B1CD7F /* 5bell.m4a */,
 				1F4784002C9CB3260032FF88 /* Assets.xcassets */,
 				1F4784022C9CB3260032FF88 /* Preview Content */,
 			);
@@ -137,10 +149,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FD9BB322CAFDF7F008AD191 /* bell2.m4a in Resources */,
-				1FD9BB302CAFDF6A008AD191 /* bell3.m4a in Resources */,
+				1FD9BB322CAFDF7F008AD191 /* fourbell.m4a in Resources */,
 				1F4784042C9CB3260032FF88 /* Preview Assets.xcassets in Resources */,
-				1FD9BB2C2CAFDF3D008AD191 /* bell1.m4a in Resources */,
+				1FD9BB2C2CAFDF3D008AD191 /* onebell.m4a in Resources */,
+				1FE28B9E2CC77F8200B1CD7F /* 5bell.m4a in Resources */,
+				1FE28B9F2CC77F8200B1CD7F /* 1bell.m4a in Resources */,
+				1FE28BA02CC77F8200B1CD7F /* 2bell.m4a in Resources */,
+				1FE28BA12CC77F8200B1CD7F /* 3bell.m4a in Resources */,
+				1FE28BA22CC77F8200B1CD7F /* 4bell.m4a in Resources */,
 				1F4784012C9CB3260032FF88 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
