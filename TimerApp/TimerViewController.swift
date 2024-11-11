@@ -202,7 +202,46 @@ class TimerViewController: UIViewController {
 
     // ベルを1回再生
     private func playOneBellSound() {
-        guard let url = Bundle.main.url(forResource: "onebell", withExtension: "m4a") else { return }
+        guard let url = Bundle.main.url(forResource: "1bell", withExtension: "m4a") else { return }
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+            print("音声ファイルのURL: \(url)")
+        } catch {
+            print("音声ファイルの再生に失敗しました: \(error)")
+        }
+    }
+    
+    // ベルを2回再生
+    private func playTwoBellSound() {
+        guard let url = Bundle.main.url(forResource: "2bell", withExtension: "m4a") else { return }
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+            print("音声ファイルのURL: \(url)")
+        } catch {
+            print("音声ファイルの再生に失敗しました: \(error)")
+        }
+    }
+    
+    // ベルを3回再生
+    private func playThreeBellSound() {
+        guard let url = Bundle.main.url(forResource: "3bell", withExtension: "m4a") else { return }
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+            print("音声ファイルのURL: \(url)")
+        } catch {
+            print("音声ファイルの再生に失敗しました: \(error)")
+        }
+    }
+    
+    // ベルを4回再生
+    private func playFourBellSound() {
+        guard let url = Bundle.main.url(forResource: "4bell", withExtension: "m4a") else { return }
 
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
@@ -213,9 +252,9 @@ class TimerViewController: UIViewController {
         }
     }
 
-    // ベルを4回再生
-    private func playFourBellSound() {
-        guard let url = Bundle.main.url(forResource: "fourbell", withExtension: "m4a") else { return }
+    // ベルを5回再生
+    private func playFiveBellSound() {
+        guard let url = Bundle.main.url(forResource: "5bell", withExtension: "m4a") else { return }
 
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
@@ -261,7 +300,7 @@ class TimerViewController: UIViewController {
         
         if bellIndex < bellTimes.count && totalTime == bellTimes[bellIndex] {
             // 音を鳴らす関数を呼び出す
-            playFourBellSound()
+            playTwoBellSound()
             print("🛎️ \(bellIndex + 1)回目のベルが鳴りました！")
             bellIndex += 1
         }
